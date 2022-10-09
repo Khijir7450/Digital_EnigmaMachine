@@ -8,14 +8,14 @@ class Rotor
 {
 private:
     string rotorConnection;
-    string rotorOrientation;
-
+    // string rotorOrientation;
+    int shift;
 public:
     
     Rotor(){}
 
 
-    Rotor(string rotorConnection, string rotorOrientation)
+    Rotor(string rotorConnection)
     {
         /**
          * @brief 
@@ -27,17 +27,18 @@ public:
          * 
          */
         this->rotorConnection = rotorConnection;
-        this->rotorOrientation = rotorOrientation;
+        // this->rotorOrientation = rotorOrientation;
+        this->shift = 0;
     }
 
     string getConnection()
     {
         return rotorConnection;
     }
-    string getOrientation()
-    {
-        return rotorOrientation;
-    }
+    // string getOrientation()
+    // {
+    //     return rotorOrientation;
+    // }
 
     bool setConnection(string rotorConnection)
     {
@@ -45,11 +46,11 @@ public:
         return true;
     }
 
-    bool setOrientation(string rotorOrientation)
-    {
-        this->rotorOrientation = rotorOrientation;
-        return true;
-    }
+    // bool setOrientation(string rotorOrientation)
+    // {
+    //     this->rotorOrientation = rotorOrientation;
+    //     return true;
+    // }
 
     // bool rotate()
     // {
@@ -71,6 +72,21 @@ public:
     //     return true;
     // }
 
+    bool setShift(int shift){
+        this->shift = shift;
+        return true;
+    }
+
+    int getShift(){
+        return shift;
+    }
+
+    bool incrementShift(){
+        shift = (shift + 1) % 26;
+
+        return true;
+    }
+
     char findIndexMap(char indexChar)
     {
         /**
@@ -83,11 +99,9 @@ public:
          *  - respective character is obtained and reduced to basic int again <tempMapChar>
          *  - the connection string is utilized to search the char that the <tempMapChar> points to
          */
-        return rotorConnection[
-            rotorOrientation[
-                indexChar - 65
-            ] - 65
-        ];
+        int absIndex = (indexChar + shift - 65) % 26;
+        // cout << "old POE : " << indexChar - 65 << " new POE : " << absIndex << endl;
+        return rotorConnection[absIndex];
     }
 };
 #endif

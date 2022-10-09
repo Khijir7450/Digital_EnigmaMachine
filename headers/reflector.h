@@ -32,7 +32,7 @@ public:
 
 
     char findIndexMap(char IndexChar){
-        return reflectorConnection[IndexChar - 48] + 17;        // [-48 + 65]
+        return reflectorConnection[IndexChar - 65];        // [-48 + 65]
     }
 
 };

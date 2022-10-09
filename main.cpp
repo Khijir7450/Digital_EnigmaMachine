@@ -5,70 +5,81 @@
 
 using namespace std;
 
+void printASCII(string input){
+    for (size_t i = 0; i < input.length(); i++)
+    {
+        cout << (int)input[i] << ", " ;
+    }
+    
+}
+
 int main(int argc, char const *argv[])
 {
-    cout << operation() << endl;
+
+    // string inputText = "CXVGMYXJRQNPFKVXHXKZBJUHVD";
+    string inputText = "DAC";
+    // string inputText = "BFE";
+
+    for (size_t i = 0; i < 5; i++)
+    {
+        cout << "\n\n============================\n"
+             << endl;
+
+        string encoded = operation(inputText, i);
+        string decoded = operation(encoded, i);
+
+        cout << "INPUT TEXT : \t" << inputText << "\t" ;
+        printASCII(inputText);
+        cout << endl;
+        cout << "ENCODED TEXT : \t" << encoded << "\t" ;
+        printASCII(encoded);
+        cout << endl;
+        cout << "DECODED TEXT : \t" << decoded << "\t";
+        printASCII(decoded);
+        cout << endl;
+
+    }
+
+    // for (size_t i = 0; i < 37; i++)
+    // {
+    //     cout << i << " " << (i%13) << endl;
+    // }
+    
+
+    // for (size_t i = 0; i < 3; i++)
+    // {
+    //     cout << (int)encoded[i] << endl;
+    // }
 
     return 0;
 }
 
+// DEBUG ESSENTIALS ------
+// string testString = "FEDCBA";
+// string Connection = "EDFBAC";
+// string Orientation = "ABCDEF";
+// =============================
 
+// INITIALIZING ROTOR CONFIGS
+// Rotor rotor(Connection, Orientation);
 
+// Rotor rotors[3] = {
+//     Rotor("CDABR", Orientation),
+//     Rotor("FDEWK", Orientation),
+//     Rotor("OIHPH", Orientation)};
 
+// for (size_t i = 0; i < 3; i++)
+// {
+//     cout << "index " << i << " <<<>>> " << rotors[i].getConnection() << endl;
+// }
 
+// ROTATION ONCE
+// cout << rotor.rotate() << endl;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // DEBUG ESSENTIALS ------
-    // string testString = "FEDCBA";
-    // string Connection = "EDFBAC";
-    // string Orientation = "ABCDEF";
-    // =============================
-
-    // INITIALIZING ROTOR CONFIGS
-    // Rotor rotor(Connection, Orientation);
-
-    // Rotor rotors[3] = {
-    //     Rotor("CDABR", Orientation),
-    //     Rotor("FDEWK", Orientation),
-    //     Rotor("OIHPH", Orientation)};
-
-    // for (size_t i = 0; i < 3; i++)
-    // {
-    //     cout << "index " << i << " <<<>>> " << rotors[i].getConnection() << endl;
-    // }
-
-    // ROTATION ONCE
-    // cout << rotor.rotate() << endl;
-
-
-
-   
-
-    // string s;
-    // s=fileReader("./assets/input_output/input.txt");
-    // cout<<s<<endl;
-    // fileWriter("./assets/input_output/output.txt", s);
+// string s;
+// s=fileReader("./assets/input_output/input.txt");
+// cout<<s<<endl;
+// fileWriter("./assets/input_output/output.txt", s);
 
 /**
  * @brief
